@@ -64,11 +64,13 @@ function checkResult(i, j) {
             for (let off = -3; off <= 0; off++) {
                 console.log(vx, vy, off, i + off * vx, j + off * vy);
                 if (
-                    i + off * vx < 0 ||
                     i + off * vx > 6 ||
+                    i + off * vx < 0 ||
                     j + off * vy < 0 ||
                     j + off * vy > 5 ||
-                    (i + off * vx > 3 && vx == 1)
+                    (j + off * vy > 2 && vy == 1)||
+                    (i + off * vx > 3 && vx == 1) ||
+                    (i + off * vx < 3 && vx == -1)
                 )
                     continue;
                 if (
