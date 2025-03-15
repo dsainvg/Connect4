@@ -37,54 +37,20 @@ function stopGame(){
     document.getElementById("player2Score").textContent = `Player 2: ${wins[1]}`;
 }
 
-function checkResult(){
-    for(let i = 0;i<7;i++){
-        for(let j = 0;j<6;j++){
-            if(cellInfo[i][j] != 0){
-                if(i<=3){
-                    if(cellInfo[i][j] == cellInfo[i+1][j] && cellInfo[i][j] == cellInfo[i+2][j] && cellInfo[i][j] == cellInfo[i+3][j]){
-                        document.getElementById("playerTurn").textContent = `Player ${cellInfo[i][j]} wins!`;
-                        for(let k = 0;k<4;k++){
-                            document.getElementById("cell"+(i+k)+j).classList.add("blink");
-                            document.getElementById("cell"+(i+k)+j).textContent = "X";
-                        }
-                        stopGame();
-                        return;
-                    }
+function checkResult(i,j){
+    console.log("Checking");
+    console.log(i,j);
+    for(let vx = -1;vx<=1;vx++){
+        for(let vy = -1;vy<=1;vy++){
+            if(vx == 0 && vy == 0) continue;
+            if(cellInfo[i][j] == cellInfo[i+vx][j+vy] && cellInfo[i][j] == cellInfo[i+2*vx][j+2*vy] && cellInfo[i][j] == cellInfo[i+3*vx][j+3*vy]){
+                document.getElementById("playerTurn").textContent = `Player ${cellInfo[i][j]} wins!`;
+                for(let k = 0;k<4;k++){
+                    document.getElementById("cell"+(i+k*vx)+(j+k*vy)).classList.add("blink");
+                    document.getElementById("cell"+(i+k*vx)+(j+k*vy)).textContent = "X";
                 }
-                if(j<=2){
-                    if(cellInfo[i][j] == cellInfo[i][j+1] && cellInfo[i][j] == cellInfo[i][j+2] && cellInfo[i][j] == cellInfo[i][j+3]){
-                        document.getElementById("playerTurn").textContent = `Player ${cellInfo[i][j]} wins!`;
-                        for(let k = 0;k<4;k++){
-                            document.getElementById("cell"+i+(j+k)).classList.add("blink");
-                            document.getElementById("cell"+i+(j+k)).textContent = "X";
-                        }
-                        stopGame();
-                        return;
-                    }
-                }
-                if(i<=3 && j<=2){
-                    if(cellInfo[i][j] == cellInfo[i+1][j+1] && cellInfo[i][j] == cellInfo[i+2][j+2] && cellInfo[i][j] == cellInfo[i+3][j+3]){
-                        document.getElementById("playerTurn").textContent = `Player ${cellInfo[i][j]} wins!`;
-                        for(let k = 0;k<4;k++){
-                            document.getElementById("cell"+(i+k)+(j+k)).classList.add("blink");
-                            document.getElementById("cell"+(i+k)+(j+k)).textContent = "X";
-                        }
-                        stopGame();
-                        return;
-                    }
-                }
-                if(i>=3 && j>=2){
-                    if(cellInfo[i][j] == cellInfo[i+1][j-1] && cellInfo[i][j] == cellInfo[i+2][j-2] && cellInfo[i][j] == cellInfo[i+3][j-3]){
-                        document.getElementById("playerTurn").textContent = `Player ${cellInfo[i][j]} wins!`;
-                        for(let k = 0;k<4;k++){
-                            document.getElementById("cell"+(i+k)+(j-k)).classList.add("blink");
-                            document.getElementById("cell"+(i+k)+(j-k)).textContent = "X";
-                        }
-                        stopGame();
-                        return;
-                    }
-                }
+                stopGame();
+                return;
             }
         }
     }
@@ -102,8 +68,8 @@ function nextMove(e){
     if(colId != -1){
         cellInfo[colId][rowId] = currentPlayer;
         document.getElementById("cell"+colId+rowId).classList.add(`player${currentPlayer}Cell`);
+        checkResult(colId,rowId);
         currentPlayer = currentPlayer == 1 ? 2 : 1;
         document.getElementById("playerTurn").textContent = `Player ${currentPlayer}'s turn`;
-        checkResult();
     } 
 }
