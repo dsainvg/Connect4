@@ -1,5 +1,6 @@
 let cellInfo = [];
 let currentPlayer = 1;
+let wins = [0,0];
 
 for(let i = 0;i<7;i++){
     document.getElementById("board").innerHTML += "<div class='col' id='col"+i+"'></div>";
@@ -31,6 +32,9 @@ function stopGame(){
             document.getElementById("cell"+i+j).disabled = true;
         }
     }
+    wins[currentPlayer-1]++;
+    document.getElementById("player1Score").textContent = `Player 1: ${wins[0]}`;
+    document.getElementById("player2Score").textContent = `Player 2: ${wins[1]}`;
 }
 
 function checkResult(){
