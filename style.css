@@ -2,6 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+body{
+    background: linear-gradient(120deg, #1737f0 0%, #8e3bca 50%, #c34f6e 100%);
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
 }
 
 #board{
@@ -14,16 +28,68 @@
 
 .cell{
     display: block;
-    width: 70px;
-    height: 70px;
-    border: 1px solid black;
-    margin-bottom: 15px;
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    margin: 1vw;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(192, 78, 78, 0.5);
 }
+
 
 .player1Cell{
-    background-color: #f00;
+    background-color: #ee1099;
+}
+.player2Cell{
+    background-color: #1916db;
+}
+.player1, .player2{
+    display: block;
+    padding: 50px;
+    border-radius: 20px;
+    font-size: x-large;
+    z-index: 100;
 }
 
-.player2Cell{
-    background-color: #00f;
+.player1{
+    color: #ee1099;
+}
+.player2{
+    color: #1916db;
+}
+
+
+.endgame{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    background: linear-gradient(135deg, #6886ff 0%, #7451e7 50%, #c34f6e 100%);
+    border-radius: 20px;
+    font-size: x-large;
+    z-index: 100;
+}
+.blur{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(10px);
+    z-index: 3;
+}
+.unblur{
+    z-index: 0;
+}
+
+
+#playerTurn{
+    color: #ee1099;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bold;
+    justify-content: center;
 }

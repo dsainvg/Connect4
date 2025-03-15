@@ -2,6 +2,8 @@ let cellInfo = [];
 let currentPlayer = 1;
 let wins = [0, 0];
 let gameStat = 1;
+let noofturns = 1;
+let isDraw = 0;
 
 for (let i = 0; i < 7; i++) {
     document.getElementById("board").innerHTML +=
@@ -37,24 +39,53 @@ function restart() {
         "playerTurn"
     ).textContent = `Player ${currentPlayer}'s turn`;
     gameStat = 1;
+    gameendingpopup(false);
+    blureffect(false);
 }
-
+function blureffect(a) {
+    if (a) {
+    document.getElementById("blur").className = "blur";
+    }
+    else{
+        document.getElementById("blur").className = "unblur";
+    }
+}
+function gameendingpopup(a) {
+    const restrt = document.getElementById("restart").cloneNode(true);
+    restrt.className = "restart";
+    if (a) {
+    document.getElementById("playerTurn").className = "endgame";
+    document.getElementById("playerTurn").appendChild(restrt);
+}
+    else{
+        document.getElementById("playerTurn").innerHTML = "Player 1's turn";
+        document.getElementById("playerTurn").classList.remove("endgame");
+    }
+}
 function stopGame() {
     for (let i = 0; i < 7; i++) {
         for (j = 0; j < 6; j++) {
             document.getElementById("cell" + i + j).disabled = true;
         }
     }
-    document.getElementById("playerTurn").textContent =
-        "Game Over! Player " + currentPlayer + " wins!";
-    wins[currentPlayer - 1]++;
-    document.getElementById(
-        "player1Score"
-    ).textContent = `Player 1: ${wins[0]}`;
-    document.getElementById(
-        "player2Score"
-    ).textContent = `Player 2: ${wins[1]}`;
+    blureffect(true);
+    gameendingpopup(true);
     gameStat = 0;
+    if (isDraw!=1) {
+        document.getElementById("playerTurn").textContent =
+            "Game Over! Player " + currentPlayer + " wins!";
+        wins[currentPlayer - 1]++;
+        document.getElementById(
+            "player1Score"
+        ).textContent = `Wins: ${wins[0]}`;
+        document.getElementById(
+            "player2Score"
+        ).textContent = `Wins: ${wins[1]}`;
+        
+    }
+    else{
+        document.getElementById("playerTurn").textContent = "It's a draw!";
+    }
 }
 
 function checkResult(i, j) {
@@ -62,7 +93,7 @@ function checkResult(i, j) {
         for (let vy = 0; vy <= 1; vy++) {
             if ((vx == 0 && vy == 0) || (vx == -1 && vy == 0)) continue;
             for (let off = -3; off <= 0; off++) {
-                console.log(vx, vy, off, i + off * vx, j + off * vy);
+                // console.log(vx, vy, off, i + off * vx, j + off * vy);
                 if (
                     i + off * vx > 6 ||
                     i + off * vx < 0 ||
@@ -103,6 +134,12 @@ function checkResult(i, j) {
             }
         }
     }
+    console.log(noofturns);
+    if (noofturns == 42) {
+        document.getElementById("playerTurn").textContent = "It's a draw!";
+        isDraw = 1;
+        stopGame();
+    }
 }
 
 function nextMove(e) {
@@ -121,10 +158,16 @@ function nextMove(e) {
             .classList.add(`player${currentPlayer}Cell`);
         checkResult(colId, rowId);
         currentPlayer = currentPlayer == 1 ? 2 : 1;
+        noofturns += 1;
         if (gameStat) {
             document.getElementById(
                 "playerTurn"
             ).textContent = `Player ${currentPlayer}'s turn`;
+            if (currentPlayer == 1) {
+                document.getElementById("playerTurn").style.color = `#ee1099`;
+            } else {
+                document.getElementById("playerTurn").style.color = `#1916db`;
+            }
         }
     }
 }

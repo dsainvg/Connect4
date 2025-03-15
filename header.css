@@ -1,0 +1,28 @@
+header{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw;
+    align-items: center;
+    
+}
+header button ,.restart{
+    background: none;
+    color: #1916db;
+    border : none;
+    padding : 2vw;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    z-index: 20;
+}
+.menu{
+    color: #ee1099;
+}
+
+header img{
+    z-index: 20;
+}

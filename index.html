@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect 4</title>
+    <link rel="icon" href="https://fem-connect-four-game-mlongobardi.vercel.app/images/logo.svg" type="image/icon type">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
 </head>
 <body>
-    <header>
-        <button id="button">Menu</button>
-        <img src="" alt="Logo">
+    <header id="header">
+        <button id="button" class="menu">Menu</button>
+        <img src="https://fem-connect-four-game-mlongobardi.vercel.app/images/logo.svg" alt="Logo">
         <button id="restart" onclick="restart()">Restart</button>
     </header>
     <main>
         <div class="wrapper">
-        <div id="player1Score"></div>
-        <div id="board"></div>
-        <div id="player2Score"></div>
+        <div class="player1">
+            <h3>Player 1</h3>
+            <h5 id="player1Score">Wins: 0</h5>
         </div>
-        <div id="playerTurn">Player 1's turn</div>
+        <div id="board"></div>
+        <div class="player2">
+            <h3>Player 2</h3>
+            <h5 id="player2Score">Wins: 0</h5>
+        </div>
+        </div>
+        <div id="playerTurn" >Player 1's turn</div>
     </main>
+    <div id="blur" class="unblur"></div>
     <script src="script.js"></script>
 </body>
 </html>
