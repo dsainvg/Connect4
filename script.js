@@ -68,7 +68,7 @@ function checkResult(i, j) {
                     i + off * vx > 6 ||
                     j + off * vy < 0 ||
                     j + off * vy > 5 ||
-                    (i + off * vx > 4 && vx == 1)
+                    (i + off * vx > 3 && vx == 1)
                 )
                     continue;
                 if (
