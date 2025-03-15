@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#board{
+    display: flex;
+}
+
+.col{
+    margin-right: 10px;
+}
+
+.cell{
+    display: block;
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.player1Cell{
+    background-color: #f00;
+}
+
+.player2Cell{
+    background-color: #00f;
+}
