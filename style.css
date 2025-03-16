@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 header {
     display: flex;
     justify-content: space-around;
@@ -63,24 +64,91 @@ main {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+=======
+body{
+    background: linear-gradient(120deg, #1737f0 0%, #8e3bca 50%, #c34f6e 100%);
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    --player-color: #ee1099;
 }
 
-.col{
-    margin-right: 10px;
+
+.player1, .player2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3vw;
+    margin: 1vw;
+    height: 20vh;
+    border-radius: 20px;
+    font-size: x-large;
+    z-index: 100;
+}
+.player1 h3, .player2 h3{
+    font-size: large;
+>>>>>>> ce3168001bd5222174fdd5262c09d48722d531e5
 }
 
-.cell{
-    display: block;
-    width: 70px;
-    height: 70px;
-    border: 1px solid black;
-    margin-bottom: 15px;
+.player1{
+    color: #ee1099;
+}
+.player2{
+    color: #1916db;
 }
 
-.player1Cell{
-    background-color: #f00;
+
+.blur{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(5px);
+    z-index: 3;
+}
+.unblur{
+    z-index: 0;
 }
 
-.player2Cell{
-    background-color: #00f;
+#playerTurn{
+    color: var(--player-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
+    font-weight: bold;
+    justify-content: center;
+
+}
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+
+
+@media screen and (max-width: 600px){
+    .wrapper{
+        height: 80vh;
+        width: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .player1, .player2{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 75%;
+        height:auto;
+        padding:3vh;
+    }
 }
