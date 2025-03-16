@@ -6,9 +6,10 @@
     <title>Connect 4</title>
     <link rel="icon" href="https://fem-connect-four-game-mlongobardi.vercel.app/images/logo.svg" type="image/icon type">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
     <link rel="stylesheet" href="header.css">
 </head>
-<body>
+<body id="body">
     <header id="header">
         <button id="button" class="menu">Menu</button>
         <img src="https://fem-connect-four-game-mlongobardi.vercel.app/images/logo.svg" alt="Logo">
@@ -26,7 +27,9 @@
             <h5 id="player2Score">Wins: 0</h5>
         </div>
         </div>
-        <div id="playerTurn" >Player 1's turn</div>
+        <div id="turn">
+            <p id="playerTurn">Player 1's turn</p>
+        </div>
     </main>
     <div id="blur" class="unblur"></div>
     <script src="script.js"></script>

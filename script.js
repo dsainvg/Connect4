@@ -29,7 +29,7 @@ function restart() {
             document
                 .getElementById("cell" + i + j)
                 .classList.remove("player2Cell");
-            document.getElementById("cell" + i + j).classList.remove("blink");
+            document.getElementById("cell" + i + j).classList.add("cell");
             document.getElementById("cell" + i + j).textContent = "";
             document.getElementById("cell" + i + j).disabled = false;
         });
@@ -54,12 +54,12 @@ function gameendingpopup(a) {
     const restrt = document.getElementById("restart").cloneNode(true);
     restrt.className = "restart";
     if (a) {
-    document.getElementById("playerTurn").className = "endgame";
-    document.getElementById("playerTurn").appendChild(restrt);
+    document.getElementById("turn").className = "endgame";
+    document.getElementById("turn").appendChild(restrt);
 }
     else{
-        document.getElementById("playerTurn").innerHTML = "Player 1's turn";
-        document.getElementById("playerTurn").classList.remove("endgame");
+        document.getElementById("turn").innerHTML = "<p id=\"playerTurn\">Player 1's turn</p>";
+        document.getElementById("turn").classList.remove("endgame");
     }
 }
 function stopGame() {
@@ -153,9 +153,8 @@ function nextMove(e) {
     }
     if (colId != -1) {
         cellInfo[colId][rowId] = currentPlayer;
-        document
-            .getElementById("cell" + colId + rowId)
-            .classList.add(`player${currentPlayer}Cell`);
+        document.getElementById("cell" + colId + rowId).classList.add(`player${currentPlayer}Cell`);
+        document.getElementById("cell" + colId + rowId).classList.remove(`cell`);
         checkResult(colId, rowId);
         currentPlayer = currentPlayer == 1 ? 2 : 1;
         noofturns += 1;
@@ -164,9 +163,9 @@ function nextMove(e) {
                 "playerTurn"
             ).textContent = `Player ${currentPlayer}'s turn`;
             if (currentPlayer == 1) {
-                document.getElementById("playerTurn").style.color = `#ee1099`;
+                document.getElementById('body').style.setProperty('--player-color', `#ee1099`);
             } else {
-                document.getElementById("playerTurn").style.color = `#1916db`;
+                document.getElementById('body').style.setProperty('--player-color', `#1916db`);
             }
         }
     }
