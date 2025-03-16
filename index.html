@@ -8,7 +8,12 @@
 </head>
 <body>
     <header>
-        <button id="button">Menu</button>
+        <button id="button" onclick="toggleMenu()">Menu</button>
+        <nav id="menu">
+            <button id="continue">CONTINUE GAME</button>
+            <button id="restart-ham" onclick="restart()">RESTART</button>
+            <button id="quit">QUIT GAME</button>
+        </nav>
         <img src="" alt="Logo">
         <button id="restart" onclick="restart()">Restart</button>
     </header>
