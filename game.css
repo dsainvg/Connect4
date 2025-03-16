@@ -1,0 +1,73 @@
+#board{
+    display: flex;
+}
+
+.col{
+    margin-right: 10px;
+}
+
+.endgame{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    background: linear-gradient(135deg, #6886ff 0%, #7451e7 50%, #c34f6e 100%);
+    border-radius: 20px;
+    font-size: x-large;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.player1Cell{
+    display: block;
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    margin: 1vw;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(192, 78, 78, 0.5);
+    background-color: #ee1099;
+}
+
+.player1Cell :hover{
+    background-color: #ee1099;
+}
+.player2Cell{
+    display: block;
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    margin: 1vw;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(192, 78, 78, 0.5);
+    background-color: #1916db;
+}
+
+.player2Cell :hover{
+    background-color: #1916db;
+}
+
+.cell{
+    display: block;
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    margin: 1vw;
+    border: 0;
+    box-shadow: 2px 2px 5px rgba(192, 78, 78, 0.5);
+}
+
+.cell:hover{
+    background-color: var(--player-color);
+}
+
+
+@media screen and (max-width: 600px){
+    .player1Cell, .player2Cell, .cell{
+        width: 8vw;
+        height: 8vw;
+    }
+}
