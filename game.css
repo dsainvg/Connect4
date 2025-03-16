@@ -1,11 +1,3 @@
-.wrapper{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-}
-
 #board{
     display: flex;
 }
@@ -73,4 +65,9 @@
 }
 
 
-
+@media screen and (max-width: 600px){
+    .player1Cell, .player2Cell, .cell{
+        width: 8vw;
+        height: 8vw;
+    }
+}
